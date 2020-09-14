@@ -7,3 +7,5 @@ CREATE TABLE url (
  shorted TEXT NOT NULL 
 ) ENGINE=INNODB;
 ```
+## 직접 사용해보기
+https://aurore.ga
