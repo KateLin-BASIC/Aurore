@@ -7,7 +7,7 @@ Namespace s
 
         ' GET: Short
         Function Index()
-            Dim sCon As MySqlConnection = New MySqlConnection("Server=localhost;Database=db_name;Uid=root;Pwd=password;")
+        Dim sCon As MySqlConnection = New MySqlConnection("Server=localhost;Database=DATABASE_NAME_HERE;Uid=root;Pwd=PASSWORD_HERE;")
             sCon.Open()
             Dim sqlCom As MySqlCommand = New MySqlCommand()
             sqlCom.Connection = sCon
