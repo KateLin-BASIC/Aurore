@@ -6,5 +6,4 @@ CREATE TABLE url (
  _url TEXT NOT NULL,
  shorted TEXT NOT NULL 
 ) ENGINE=INNODB;
-DESCRIBE url;
 ```
