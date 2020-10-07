@@ -7,7 +7,7 @@ Namespace s
 
         ' GET: Short
         Function Index()
-        Dim sCon As MySqlConnection = New MySqlConnection("Server=localhost;Database=DATABASE_NAME_HERE;Uid=root;Pwd=PASSWORD_HERE;")
+            Dim sCon As MySqlConnection = New MySqlConnection($"Server={ConfigurationManager.AppSettings("appAddress")};Database={ConfigurationManager.AppSettings("appDB")};Uid={ConfigurationManager.AppSettings("appUser")};Pwd={ConfigurationManager.AppSettings("appPW")}")
             sCon.Open()
             Dim sqlCom As MySqlCommand = New MySqlCommand()
             sqlCom.Connection = sCon
@@ -17,7 +17,7 @@ Namespace s
             Dim reader As MySqlDataReader = sqlCom.ExecuteReader()
 
             While reader.Read()
-                Return Redirect(reader("_url"))
+                Return Redirect(reader("url"))
             End While
 
             Return Redirect("/")

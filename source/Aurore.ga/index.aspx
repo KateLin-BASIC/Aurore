@@ -6,7 +6,6 @@
 	<meta charset="utf-8">
 	<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
 
-	<link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet" />
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
 
@@ -29,11 +28,12 @@
 				<button ID="btnGen" runat="server" class="btn btn-lg btn-primary">생성 »</button>
 			</div>
 		</main>
-		<div class="modal fade" id="SuccModal" tabindex="-1" role="dialog" aria-labelledby="SuccModalLabel" aria-hidden="true">
+
+		<div class="modal fade" id="pnlModal" tabindex="-1" role="dialog" aria-labelledby="pnlModalLabel" aria-hidden="true">
 		  <div class="modal-dialog" role="document">
 			<div class="modal-content">
 			  <div class="modal-header">
-				<h5 class="modal-title" id="SuccModalLabel">생성 완료!</h5>
+				<h5 class="modal-title" id="pnlModalLabel">생성 완료!</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				  <span aria-hidden="true">&times;</span>
 				</button>
@@ -51,7 +51,7 @@
 		<script>
             function run(text1) {
                 $('#txtDes').text(text1)
-                $('#SuccModal').modal('show')
+                $('#pnlModal').modal('show')
             }
         </script>
 	</form>
