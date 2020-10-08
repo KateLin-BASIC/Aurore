@@ -1,40 +1,26 @@
-﻿Imports System.IO
-Imports MySql.Data.MySqlClient
+﻿Imports MySql.Data.MySqlClient
 
-Public Class index
+Public Class api
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        ClientScript.GetPostBackEventReference(Me, "")
+        If HttpContext.Current.Request.HttpMethod = "POST" And Not String.IsNullOrWhiteSpace(Request.Form("url")) Then
+            Dim filename As String = RandomString(5)
+            Dim uriResult As Uri = Nothing
+            Dim result As Boolean = Uri.TryCreate(Request.Form("url"), UriKind.Absolute, uriResult) AndAlso (uriResult.Scheme = Uri.UriSchemeHttp OrElse uriResult.Scheme = Uri.UriSchemeHttps)
 
-        If Not IsPostBack Then
-            Session("CheckRefresh") = Server.UrlDecode(System.DateTime.Now.ToString())
-        End If
-    End Sub
-
-    Private Sub index_PreRender(sender As Object, e As EventArgs) Handles Me.PreRender
-        ViewState("CheckRefresh") = Session("CheckRefresh")
-    End Sub
-
-    Private Sub btnGen_ServerClick(sender As Object, e As EventArgs) Handles btnGen.ServerClick
-        If Session("CheckRefresh").ToString() = ViewState("CheckRefresh").ToString() Then
-            If Not String.IsNullOrWhiteSpace(txtUrl.Value) Then
-                Dim filename As String = RandomString(5)
-                Dim uriResult As Uri = Nothing
-                Dim result As Boolean = Uri.TryCreate(txtUrl.Value, UriKind.Absolute, uriResult) AndAlso (uriResult.Scheme = Uri.UriSchemeHttp OrElse uriResult.Scheme = Uri.UriSchemeHttps)
-
-                If result = True Then
-                    UrlWrite(txtUrl.Value, "/s/" & filename)
-                    ScriptManager.RegisterStartupScript(Page, Page.[GetType](), "", $"run('https://aurore.ga/s/{filename}')", True)
-                    txtUrl.Value = ""
-                Else
-                    UrlWrite("http://" & txtUrl.Value, "/s/" & filename)
-                    ScriptManager.RegisterStartupScript(Page, Page.[GetType](), "", $"run('https://aurore.ga/s/{filename}')", True)
-                    txtUrl.Value = ""
-                End If
+            If result = True Then
+                UrlWrite(Request.Form("url"), "/s/" & filename)
+                Response.Write($"https://aurore.ga/s/{filename}")
+            Else
+                UrlWrite("http://" & Request.Form("url"), "/s/" & filename)
+                Response.Write($"https://aurore.ga/s/{filename}")
             End If
-
-            Session("CheckRefresh") = Server.UrlDecode(System.DateTime.Now.ToString())
+        Else
+            Response.TrySkipIisCustomErrors = True
+            Response.ContentType = "text/plain"
+            Response.Write("Bad Request")
+            Response.StatusCode = 400
         End If
     End Sub
 

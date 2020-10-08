@@ -9,8 +9,7 @@
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
 
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> 
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script> 
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 	<title>Aurore.ga - URL를 짧게</title>
@@ -20,10 +19,10 @@
 		<br />
 		<main role="main" class="container">
 			<div class="shadow p-4 mb-5 bg-white rounded">
-				<h2>aurore.ga</h2>
-				<p class="lead">aurore.ga는 긴 URL을 짧게 줄여 주는 서비스입니다.</p>
+				<h2>Aurore.ga</h2>
+				<p class="lead">Aurore.ga는 긴 URL을 짧게 줄여 주는 서비스입니다.&nbsp&nbsp<a href="api.aspx">API</a> · <a href="https://docs.aurore.ga">문서</a></p>
 				<label for="lblHint">단축할 URL</label>
-				<input runat="server" type="text" class="form-control" id="txtUrl" placeholder="Url을 입력해 주세요.">
+				<input autocomplete="off" runat="server" type="text" class="form-control" id="txtUrl" placeholder="Url을 입력해 주세요.">
 				<br />
 				<button ID="btnGen" runat="server" class="btn btn-lg btn-primary">생성 »</button>
 			</div>

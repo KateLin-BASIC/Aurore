@@ -45,7 +45,7 @@
 
         <p class="mb-1">URL 제거</p>
         <div class="input-group mb-3">
-            <input type="text" class="form-control" id="txtID" runat="server" placeholder="제거할 URL의 아이디"/>
+            <input type="text" class="form-control" id="txtID" runat="server" autocomplete="off" placeholder="제거할 URL의 아이디"/>
             <div class="input-group-append">
                 <button class="btn btn-danger" id="btnDelete" runat="server" type="button">제거</button>
             </div>

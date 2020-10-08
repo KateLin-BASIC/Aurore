@@ -19,15 +19,17 @@
 
         <br />
 
-        <label for="inputEmail" class="sr-only">Username</label>
-        <input type="text" id="inputEmail" class="form-control" placeholder="Username" runat="server" autofocus=""/>
+        <label for="inputEmail" class="sr-only">사용자 이름</label>
+        <input autocomplete="off" type="text" id="inputEmail" class="form-control" placeholder="유저 네임" runat="server" autofocus=""/>
 
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" runat="server" placeholder="Password"/>
+        <label for="inputPassword" class="sr-only">비밀번호</label>
+        <input type="password" id="inputPassword" class="form-control" runat="server" placeholder="비밀번호"/>
+
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="float-right mb-3">비밀번호 찾기</a>
 
         <br />
 
-        <button class="btn btn-lg btn-primary btn-block" id="btnSignIn" runat="server">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block" id="btnSignIn" runat="server">로그인</button>
         <p class="mt-5 mb-3 text-muted text-center">© 2019-2020 Kate Lin</p>
     </form>
 

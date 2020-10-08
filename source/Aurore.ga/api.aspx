@@ -1,0 +1,1 @@
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="api.aspx.vb" Inherits="Aurore.ga.api" %>
