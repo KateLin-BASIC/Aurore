@@ -58,11 +58,92 @@
     </div>
 
     <script>
-        function copy() { var t = document.getElementById("txtDes1"); t.select(), t.setSelectionRange(0, 99999), document.execCommand("copy") } function run(t) { $("#txtDes1").val(t), $("#pnlModal").modal("show") } function run1() { $("#pnlError").modal("show") } function stoppedTyping() { $("#txtUrl").val().length > 0 ? $("#btnGen").attr("disabled", !1) : $("#btnGen").attr("disabled", !0) } function LockControl(t) { $("#btnGen").attr("disabled", t), $("#txtUrl").attr("disabled", t), $("#loadbar").attr("hidden", !t) } function GenURL() { LockControl(!0), $.ajax({ url: "/api", type: "POST", data: "url=" + $("#txtUrl").val(), complete: function () { LockControl(!1) }, error: function (t) { LockControl(!1), 409 === t.status && run1() }, success: function (t) { LockControl(!1), run(t) } }) } stoppedTyping(), $(document).ready(function () { $("#txtUrl").keypress(function (t) { 13 == t.which && GenURL() }) });
+        stoppedTyping();
+
+        function copy() {
+            var copyText = document.getElementById("txtDes1");
+
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+
+            document.execCommand("copy");
+        }
+
+        function run(text1) {
+            $('#txtDes1').val(text1)
+            $('#pnlModal').modal('show')
+        }
+
+        function run1() {
+            $('#pnlError').modal('show')
+        }
+
+        function stoppedTyping() {
+            if ($("#txtUrl").val().length > 0) {
+                $("#btnGen").attr("disabled", false);
+            } else {
+                $("#btnGen").attr("disabled", true);
+            }
+        }
+
+        function LockControl(bool) {
+            $("#btnGen").attr("disabled", bool);
+            $("#txtUrl").attr("disabled", bool);
+            $("#loadbar").attr("hidden", !bool);
+        }
+
+        function GenURL() {
+            LockControl(true);
+
+            $.ajax({
+                url: '/api',
+                type: 'POST',
+                data: "url=" + $("#txtUrl").val(),
+                complete: function () {
+                    LockControl(false);
+                },
+                error: function (jqXHR) {
+                    LockControl(false);
+
+                    if (jqXHR.status === 409) {
+                        run1()
+                    }
+                },
+                success: function (data) {
+                    LockControl(false);
+
+                    run(data)
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            $("#txtUrl").keypress(function (e) {
+                if (e.which == 13) {
+                    GenURL();
+                }
+            });
+        });
     </script>
 
     <style>
-        body{background-color:#f5f5f5;font-family:'Noto Sans KR',sans-serif}.center-div{position:absolute;top:0;right:0;bottom:0;left:0;display:flex;align-items:center;justify-content:center;display:-webkit-flex;-webkit-justify-content:center}
+        body {
+            background-color: #f5f5f5;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .center-div {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            display: -webkit-flex;
+            -webkit-justify-content: center;
+        }
     </style>
 </body>
 </html>
